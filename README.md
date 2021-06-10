@@ -9,3 +9,7 @@ Things you may want to cover:
 
 * Rails Version: 6.0.3
 
+* Rspec Version: 5.0.0'
+
+
+
