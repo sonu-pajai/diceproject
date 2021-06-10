@@ -1,0 +1,4 @@
+<% @dice_data.each_with_index do |dice_data, index| %>
+Dies<%=index+1%> sides = <%=dice_data[:sides] %> & Value=<%=dice_data[:dice_val] %> <br/>
+<% end %>
+Tatal = <%=@total%>

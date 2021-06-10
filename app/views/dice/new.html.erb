@@ -1,0 +1,31 @@
+<input type="text" name="dice" id="dice">
+<button id="add-row">Enter no of Dice</button>
+
+<form action="/compute" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div id="dice-div"></div>
+  <input type="submit" value="Submit" id="submit-btn" style="display:none;">
+</form>
+
+<script type="text/javascript">
+$(function() {
+    $('#add-row').click(function() {
+      if ($("#dice").val().length == 0) {
+        alert("please add no of dice");
+        return false;
+      }
+      $('#dice-div').empty();
+      $('#submit-btn').show();
+      var template = "<input type='text' name='sides[INDEX]' class='dice-index' required>",
+        index = $('.dice-index').length,
+        compiled_template, i;
+      var roll_count = parseInt($("#dice").val());
+      for (i = 0; i < roll_count; i++) {
+        compiled_text = $(template.replace("INDEX", index));
+        dice_index = index+1
+        $('#dice-div').append("<br/>Dice "+dice_index+" sides ").append(compiled_text);
+        index = index + 1;
+      }
+    });
+});
+</script>
